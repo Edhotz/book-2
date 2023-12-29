@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -56,4 +60,17 @@ public class BookController {
         bookServices.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping(value = "/sendData/{id}")
+    public ResponseEntity<String> sendDataToExternalAPI(@PathVariable Long id) {
+        BookDTO bookDTO = bookServices.findById(id);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<BookDTO> request = new HttpEntity<>(bookDTO, headers);
+        String apiExternalUrl = "https://admin.kioxke.ao/api/v0.1/book/setBookUpload";
+        ResponseEntity<String> response = restTemplate.postForEntity(apiExternalUrl, request, String.class);
+        return response;
+    }
+
 }

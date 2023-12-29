@@ -13,7 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Service
@@ -58,6 +60,8 @@ public class BookServices {
         entity.setTotalPage(dto.getTotalPage());
         entity.setCuponCode(dto.getCuponCode());
         entity = bookRepository.save(entity);
+
+
         return new BookDTO(entity);
     }
 
@@ -101,4 +105,23 @@ public class BookServices {
             throw new DatabaseException("Integrity violation");
         }
     }
+
+    @Transactional
+    public BookDTO uploadFile(Long id, MultipartFile file) {
+        try {
+            Book entity = bookRepository.getOne(id);
+
+            // Salve o arquivo no sistema de arquivos ou no armazenamento em nuvem, dependendo da sua necessidade
+            // Aqui, vamos apenas definir o nome do arquivo na entidade
+            entity.setUrlpath(file.getOriginalFilename());
+
+            // Atualize a entidade no banco de dados
+            entity = bookRepository.save(entity);
+
+            return new BookDTO(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Id not found");
+        }
+    }
+
 }

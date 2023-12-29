@@ -12,8 +12,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
+import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 
 @RestController
@@ -21,6 +22,7 @@ import java.net.URI;
 public class BookController {
     @Autowired
     private BookServices bookServices;
+
 
 
     @GetMapping
@@ -42,8 +44,11 @@ public class BookController {
     }
 
     @PostMapping(value = "/{id}")
-    public ResponseEntity<BookDTO> insert(@RequestBody BookDTO dto) {
+    public ResponseEntity<BookDTO> insert(@RequestBody BookDTO dto, @RequestParam("file") MultipartFile file) {
         dto = bookServices.insert(dto);
+
+        bookServices.uploadFile(dto.getId(), file);
+
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(dto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(dto);
@@ -61,16 +66,11 @@ public class BookController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(value = "/sendData/{id}")
-    public ResponseEntity<String> sendDataToExternalAPI(@PathVariable Long id) {
-        BookDTO bookDTO = bookServices.findById(id);
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<BookDTO> request = new HttpEntity<>(bookDTO, headers);
-        String apiExternalUrl = "https://admin.kioxke.ao/api/v0.1/book/setBookUpload";
-        ResponseEntity<String> response = restTemplate.postForEntity(apiExternalUrl, request, String.class);
-        return response;
-    }
 
+    @PostMapping("/{id}/upload")
+    public ResponseEntity<BookDTO> uploadFile(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        BookDTO result = bookServices.uploadFile(id, file);
+
+        return ResponseEntity.ok(result);
+    }
 }

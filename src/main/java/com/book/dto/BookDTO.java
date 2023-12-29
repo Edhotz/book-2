@@ -29,6 +29,7 @@ public class BookDTO implements Serializable {
     private String cookie;
     private String desenhista;
     private String escritor;
+
     private String ISBN;
     private String numcontrato;
     private String royalities;

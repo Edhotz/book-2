@@ -35,9 +35,6 @@ public class Book implements Serializable {
     private String royalities;
     private String cuponcode;
 
-
-
-
     public Book() {
 
     }

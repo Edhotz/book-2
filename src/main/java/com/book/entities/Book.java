@@ -21,25 +21,25 @@ public class Book implements Serializable {
     private String capa;
     private String autor;
     private String categoria;
-    private String subcategoria;
+    private String subCategoria;
     private String rate;
     private String size;
     private String extencao;
-    private String urlpath;
-    private String totalpage;
+    private String urlPath;
+    private String totalPage;
     private String cookie;
     private String desenhista;
     private String escritor;
     private String ISBN;
-    private String numcontrato;
+    private String numContrato;
     private String royalities;
-    private String cuponcode;
+    private String cuponCode;
 
     public Book() {
 
     }
 
-    public Book(Long id, String titulo, Float preco, String descricao, String capa, String autor, String categoria, String subcategoria, String rate, String size, String extencao, String urlpath, String totalpage, String cookie, String desenhista, String escritor, String ISBN, String numcontrato, String royalities, String cuponcode) {
+    public Book(Long id, String titulo, Float preco, String descricao, String capa, String autor, String categoria, String subCategoria, String rate, String size, String extencao, String urlPath, String totalPage, String cookie, String desenhista, String escritor, String ISBN, String numContrato, String royalities, String cuponCode) {
         this.id = id;
         this.titulo = titulo;
         this.preco = preco;
@@ -47,19 +47,19 @@ public class Book implements Serializable {
         this.capa = capa;
         this.autor = autor;
         this.categoria = categoria;
-        this.subcategoria = subcategoria;
+        this.subCategoria = subCategoria;
         this.rate = rate;
         this.size = size;
         this.extencao = extencao;
-        this.urlpath = urlpath;
-        this.totalpage = totalpage;
+        this.urlPath = urlPath;
+        this.totalPage = totalPage;
         this.cookie = cookie;
         this.desenhista = desenhista;
         this.escritor = escritor;
         this.ISBN = ISBN;
-        this.numcontrato = numcontrato;
+        this.numContrato = numContrato;
         this.royalities = royalities;
-        this.cuponcode = cuponcode;
+        this.cuponCode = cuponCode;
     }
 
     public Long getId() {
@@ -119,11 +119,11 @@ public class Book implements Serializable {
     }
 
     public String getSubcategoria() {
-        return subcategoria;
+        return subCategoria;
     }
 
     public void setSubcategoria(String subcategoria) {
-        this.subcategoria = subcategoria;
+        this.subCategoria = subcategoria;
     }
 
     public String getRate() {
@@ -151,19 +151,19 @@ public class Book implements Serializable {
     }
 
     public String getUrlpath() {
-        return urlpath;
+        return urlPath;
     }
 
     public void setUrlpath(String urlpath) {
-        this.urlpath = urlpath;
+        this.urlPath = urlpath;
     }
 
     public String getTotalPage() {
-        return totalpage;
+        return totalPage;
     }
 
     public void setTotalPage(String totalPage) {
-        this.totalpage = totalPage;
+        this.totalPage = totalPage;
     }
 
     public String getCookie() {
@@ -199,11 +199,11 @@ public class Book implements Serializable {
     }
 
     public String getNumContrato() {
-        return numcontrato;
+        return numContrato;
     }
 
     public void setNumContrato(String numContrato) {
-        this.numcontrato = numContrato;
+        this.numContrato = numContrato;
     }
 
     public String getRoyalities() {
@@ -215,11 +215,11 @@ public class Book implements Serializable {
     }
 
     public String getCuponCode() {
-        return cuponcode;
+        return cuponCode;
     }
 
     public void setCuponCode(String cuponCode) {
-        this.cuponcode = cuponCode;
+        this.cuponCode = cuponCode;
     }
 
     @Override
@@ -227,11 +227,11 @@ public class Book implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(id, book.id) && Objects.equals(titulo, book.titulo) && Objects.equals(preco, book.preco) && Objects.equals(descricao, book.descricao) && Objects.equals(capa, book.capa) && Objects.equals(autor, book.autor) && Objects.equals(categoria, book.categoria) && Objects.equals(subcategoria, book.subcategoria) && Objects.equals(rate, book.rate) && Objects.equals(size, book.size) && Objects.equals(extencao, book.extencao) && Objects.equals(urlpath, book.urlpath) && Objects.equals(totalpage, book.totalpage) && Objects.equals(cookie, book.cookie) && Objects.equals(desenhista, book.desenhista) && Objects.equals(escritor, book.escritor) && Objects.equals(ISBN, book.ISBN) && Objects.equals(numcontrato, book.numcontrato) && Objects.equals(royalities, book.royalities) && Objects.equals(cuponcode, book.cuponcode);
+        return Objects.equals(id, book.id) && Objects.equals(titulo, book.titulo) && Objects.equals(preco, book.preco) && Objects.equals(descricao, book.descricao) && Objects.equals(capa, book.capa) && Objects.equals(autor, book.autor) && Objects.equals(categoria, book.categoria) && Objects.equals(subCategoria, book.subCategoria) && Objects.equals(rate, book.rate) && Objects.equals(size, book.size) && Objects.equals(extencao, book.extencao) && Objects.equals(urlPath, book.urlPath) && Objects.equals(totalPage, book.totalPage) && Objects.equals(cookie, book.cookie) && Objects.equals(desenhista, book.desenhista) && Objects.equals(escritor, book.escritor) && Objects.equals(ISBN, book.ISBN) && Objects.equals(numContrato, book.numContrato) && Objects.equals(royalities, book.royalities) && Objects.equals(cuponCode, book.cuponCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, titulo, preco, descricao, capa, autor, categoria, subcategoria, rate, size, extencao, urlpath, totalpage, cookie, desenhista, escritor, ISBN, numcontrato, royalities, cuponcode);
+        return Objects.hash(id, titulo, preco, descricao, capa, autor, categoria, subCategoria, rate, size, extencao, urlPath, totalPage, cookie, desenhista, escritor, ISBN, numContrato, royalities, cuponCode);
     }
 }

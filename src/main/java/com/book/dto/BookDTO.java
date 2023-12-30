@@ -20,25 +20,25 @@ public class BookDTO implements Serializable {
     private String capa;
     private String autor;
     private String categoria;
-    private String subcategoria;
+    private String subCategoria;
     private String rate;
     private String size;
     private String extencao;
-    private String urlpath;
-    private String totalpage;
+    private String urlPath;
+    private String totalPage;
     private String cookie;
     private String desenhista;
     private String escritor;
 
     private String ISBN;
-    private String numcontrato;
+    private String numContrato;
     private String royalities;
-    private String cuponcode;
+    private String cuponCode;
 
     public BookDTO() {
     }
 
-    public BookDTO(Long id, String titulo, Float preco, String descricao, String capa, String autor, String categoria, String subcategoria, String rate, String size, String extencao, String urlpath, String totalpage, String cookie, String desenhista, String escritor, String ISBN, String numcontrato, String royalities, String cuponcode) {
+    public BookDTO(Long id, String titulo, Float preco, String descricao, String capa, String autor, String categoria, String subCategoria, String rate, String size, String extencao, String urlPath, String totalPage, String cookie, String desenhista, String escritor, String ISBN, String numContrato, String royalities, String cuponCode) {
         this.id = id;
         this.titulo = titulo;
         this.preco = preco;
@@ -46,19 +46,19 @@ public class BookDTO implements Serializable {
         this.capa = capa;
         this.autor = autor;
         this.categoria = categoria;
-        this.subcategoria = subcategoria;
+        this.subCategoria = subCategoria;
         this.rate = rate;
         this.size = size;
         this.extencao = extencao;
-        this.urlpath = urlpath;
-        this.totalpage = totalpage;
+        this.urlPath = urlPath;
+        this.totalPage = totalPage;
         this.cookie = cookie;
         this.desenhista = desenhista;
         this.escritor = escritor;
         this.ISBN = ISBN;
-        this.numcontrato = numcontrato;
+        this.numContrato = numContrato;
         this.royalities = royalities;
-        this.cuponcode = cuponcode;
+        this.cuponCode = cuponCode;
     }
 
 
@@ -70,19 +70,19 @@ public class BookDTO implements Serializable {
         this.capa = entity.getCapa();
         this.autor = entity.getAutor();
         this.categoria = entity.getCategoria();
-        this.subcategoria = entity.getSubcategoria();
+        this.subCategoria = entity.getSubcategoria();
         this.rate = entity.getRate();
         this.size = entity.getSize();
         this.extencao = entity.getExtencao();
-        this.urlpath = entity.getUrlpath();
-        this.totalpage = entity.getTotalPage();
+        this.urlPath = entity.getUrlpath();
+        this.totalPage = entity.getTotalPage();
         this.cookie = entity.getCookie();
         this.desenhista = entity.getDesenhista();
         this.escritor = entity.getEscritor();
         this.ISBN = entity.getISBN();
-        this.numcontrato = entity.getNumContrato();
+        this.numContrato = entity.getNumContrato();
         this.royalities = entity.getRoyalities();
-        this.cuponcode = entity.getCuponCode();
+        this.cuponCode = entity.getCuponCode();
     }
 
     public Long getId() {
@@ -142,11 +142,11 @@ public class BookDTO implements Serializable {
     }
 
     public String getSubcategoria() {
-        return subcategoria;
+        return subCategoria;
     }
 
     public void setSubcategoria(String subcategoria) {
-        this.subcategoria = subcategoria;
+        this.subCategoria = subcategoria;
     }
 
     public String getRate() {
@@ -174,19 +174,19 @@ public class BookDTO implements Serializable {
     }
 
     public String getUrlpath() {
-        return urlpath;
+        return urlPath;
     }
 
     public void setUrlpath(String urlpath) {
-        this.urlpath = urlpath;
+        this.urlPath = urlpath;
     }
 
     public String getTotalPage() {
-        return totalpage;
+        return totalPage;
     }
 
     public void setTotalPage(String totalPage) {
-        this.totalpage = totalPage;
+        this.totalPage = totalPage;
     }
 
     public String getCookie() {
@@ -222,11 +222,11 @@ public class BookDTO implements Serializable {
     }
 
     public String getNumContrato() {
-        return numcontrato;
+        return numContrato;
     }
 
     public void setNumContrato(String numContrato) {
-        this.numcontrato = numContrato;
+        this.numContrato = numContrato;
     }
 
     public String getRoyalities() {
@@ -238,10 +238,10 @@ public class BookDTO implements Serializable {
     }
 
     public String getCuponCode() {
-        return cuponcode;
+        return cuponCode;
     }
 
     public void setCuponCode(String cuponCode) {
-        this.cuponcode = cuponCode;
+        this.cuponCode = cuponCode;
     }
 }

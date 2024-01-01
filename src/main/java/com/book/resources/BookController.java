@@ -79,7 +79,6 @@ public class BookController {
 
         return ResponseEntity.created(uri).body(externalApiResponse.getBody());
 
-
     }
 
     @PutMapping(value = "/{id}")
@@ -100,25 +99,23 @@ public class BookController {
         try {
 
             BookDTO result = bookServices.uploadFile(id, file);
-            // URL da sua API externa
+
             String apiUrl = "https://admin.kioxke.ao/api/v0.1/book/setBookUpload";
 
-            // Abre a conexão HTTP
             URL url = new URL(apiUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            // Configura a conexão para aceitar entrada e saída
+
             connection.setDoOutput(true);
             connection.setDoInput(true);
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
 
-            // Configura os parâmetros da requisição
             String boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW";
             String lineEnd = "\r\n";
             String twoHyphens = "--";
 
-            // Cria a string de dados da requisição
+
             StringBuilder postData = new StringBuilder();
             postData.append(twoHyphens).append(boundary).append(lineEnd);
             postData.append("Content-Disposition: form-data; name=\"id\"").append(lineEnd);
@@ -130,11 +127,11 @@ public class BookController {
             postData.append("Content-Type: ").append(file.getContentType()).append(lineEnd);
             postData.append(lineEnd);
 
-            // Abre o stream de saída e escreve os dados da requisição
+
             DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
             outputStream.writeBytes(postData.toString());
 
-            // Abre o stream de entrada e escreve o arquivo
+
             try (InputStream fileInputStream = file.getInputStream()) {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
@@ -144,27 +141,23 @@ public class BookController {
                 }
             }
 
-            // Finaliza a requisição
+
             outputStream.writeBytes(lineEnd);
             outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
             outputStream.flush();
             outputStream.close();
 
-            // Obtém a resposta da API externa
+
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                // Leia a resposta da API externa se necessário
-                // InputStream inputStream = connection.getInputStream();
-                // ... faça algo com os dados de resposta
 
-                // Retorna a resposta da API externa
                 return ResponseEntity.ok(result);
             } else {
-                // Se a resposta não for HTTP OK, trate o erro conforme necessário
+
                 return ResponseEntity.status(responseCode).build();
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Trate a exceção conforme necessário
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
